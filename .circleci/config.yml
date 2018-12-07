@@ -27,4 +27,4 @@ jobs:
           command: npm run generate
       - run:
           name: Deploy
-          command: ~/.local/bin/firebase deploy --token "$FIREBASE_TOKEN" --project "our-library"
+          command: ~/.local/bin/firebase deploy --token "$FIREBASE_TOKEN" --project "our-library-3c1bc"
