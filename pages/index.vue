@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <div class="container">
     <div>
       <app-logo/>
       <h1 class="title">
@@ -13,15 +13,15 @@
           href="https://nuxtjs.org/"
           target="_blank"
           rel="noopener"
-          class="button--green">Documentation</a>
+          class="button is-primary is-outlined">Documentation</a>
         <a
           href="https://github.com/nuxt/nuxt.js"
           target="_blank"
           rel="noopener"
-          class="button--grey">GitHub</a>
+          class="button is-link is-outlined">GitHub</a>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>

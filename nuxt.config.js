@@ -37,5 +37,6 @@ module.exports = {
   },
   modules: [
     '@nuxtjs/pwa',
+    '@nuxtjs/bulma'
   ]
 }
