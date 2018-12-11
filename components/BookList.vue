@@ -6,7 +6,7 @@
       <th>ISBN</th>
       <th>タイトル</th>
       <th>サブタイトル</th>
-      <th>著書</th>
+      <th>著者</th>
     </tr>
     </thead>
     <tfoot>
@@ -14,7 +14,7 @@
       <th>ISBN</th>
       <th>タイトル</th>
       <th>サブタイトル</th>
-      <th>著書</th>
+      <th>著者</th>
     </tr>
     </tfoot>
     <!--データ-->

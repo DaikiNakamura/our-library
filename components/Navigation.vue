@@ -21,7 +21,7 @@
             管理メニュー
           </a>
           <div class="navbar-dropdown is-boxed">
-            <a class="navbar-item">
+            <a class="navbar-item" href="/register">
               本の登録
             </a>
           </div>

@@ -16,3 +16,9 @@ export const state = () => ({
     author: 'エリヤフ・ゴールドラット'
   }] // dummy data
 });
+
+export const mutations = {
+  add (state, book) {
+    state.list.push(book)
+  }
+};
