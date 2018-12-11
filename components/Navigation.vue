@@ -2,7 +2,7 @@
   <nav class="navbar is-transparent is-dark" role="navigation" aria-label="main navigation">
     <!--logo-->
     <div class="navbar-brand">
-      <a class="navbar-item" href="/">OUR LIBRARY</a>
+      <a class="navbar-item" href="/">OUR LIBRARY(開発中)</a>
       <!--burger-->
       <div class="navbar-burger burger" v-bind:class="{ 'is-active': menuActive }" v-on:click="menuToggle" data-target="navbarExampleTransparentExample">
         <span></span>
