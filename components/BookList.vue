@@ -30,12 +30,16 @@
 </template>
 
 <script>
+  import {db} from '~/plugins/firebase.js'
+  import {mapGetters} from 'vuex'
+
   export default {
     name: "BookList",
+    created() {
+      this.$store.dispatch('setBooks', db.collection('books'))
+    },
     computed: {
-      books() {
-        return this.$store.state.books.list;
-      }
+      ...mapGetters({books: 'getBooks'})
     }
   }
 </script>

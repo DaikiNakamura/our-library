@@ -23,6 +23,11 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run:
+          name: Setup FireStore credentials
+          command: |
+            printf "{\n\"apiKey\": \"${FIREBASE_API_KEY}\"\n\"authDomain\": \"${FIREBASE_PJ_NAME}.firebaseapp.com\"\n\"databaseURL\": \"https://${FIREBASE_PJ_NAME}.firebaseio.com\"\n\"projectId\": \"${FIREBASE_PJ_NAME}\"\n}"> ~/serviceAccountKey.json
+            chmod 600 ~/serviceAccountKey.json
+      - run:
           name: Build
           command: npm run generate
       - run:

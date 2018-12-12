@@ -42,5 +42,6 @@ module.exports = {
   modules: [
     '@nuxtjs/pwa',
     '@nuxtjs/bulma'
-  ]
+  ],
+  plugins: ['~/plugins/firebase']
 };

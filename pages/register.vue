@@ -41,6 +41,7 @@
 </template>
 
 <script>
+  import {db} from '~/plugins/firebase.js'
   export default {
     data() {
       return {
@@ -54,7 +55,7 @@
     },
     methods: {
       submit() {
-        this.$store.commit('books/add', this.form);
+        db.collection('books').add(this.form);
         this.form = {};
       },
       reset() {
