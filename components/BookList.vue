@@ -20,7 +20,7 @@
     <!--データ-->
     <tbody>
     <tr v-for="book in books" :key="book.isbn">
-      <td>{{ book.isbn }}</td>
+      <td><nuxt-link :to="{ name:'detail-isbn', params: { isbn: book.isbn } }">{{ book.isbn }}</nuxt-link></td>
       <td>{{ book.title }}</td>
       <td>{{ book.subTitle }}</td>
       <td>{{ book.author }}</td>
