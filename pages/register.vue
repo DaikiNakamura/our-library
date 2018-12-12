@@ -3,9 +3,16 @@
     <h3 class="title">本の登録</h3>
     <div class="field">
       <label class="label">ISBN</label>
-      <div class="control">
-        <input class="input" type="text" placeholder="ISBNを入力してください"
-               v-model="form.isbn">
+      <div class="field has-addons">
+        <div class="control is-expanded">
+          <input class="input" type="text" placeholder="ISBNを入力してください"
+                 v-model="form.isbn">
+        </div>
+        <div class="control">
+          <a class="button is-info" v-on:click="inputFromApi()">
+            APIから取得
+          </a>
+        </div>
       </div>
     </div>
     <div class="field">
@@ -42,6 +49,8 @@
 
 <script>
   import {db} from '~/plugins/firebase.js'
+  import axios from 'axios'
+
   export default {
     data() {
       return {
@@ -60,6 +69,20 @@
       },
       reset() {
         this.form = {};
+      },
+      async inputFromApi() {
+        let {data} = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${this.form.isbn}`);
+        if (!data.items) {
+          window.alert('データが存在しません');
+          return;
+        }
+        let bookData = data.items[0].volumeInfo;
+        this.form = {
+          isbn: this.form.isbn,
+          title: bookData.title,
+          subTitle: bookData.subtitle,
+          author: bookData.authors[0]
+        }
       }
     }
   }

@@ -2,6 +2,21 @@
   <div class="container" v-if="book">
     <h1 class="title">{{ book.title }}</h1>
     <h2 class="subtitle">{{ book.subTitle }}</h2>
+    <hr />
+    <div class="media">
+      <figure class="media-left">
+        <p class="image is-128x128">
+          <img v-bind:src="book.imageUrl">
+        </p>
+      </figure>
+      <div class="media-content">
+        <h3 class="title is-5">概要：</h3>
+        <p>{{ book.description }}</p>
+        <br />
+        <h3 class="title is-5">出版社：</h3>
+        <p>{{ book.publisher }}</p>
+      </div>
+    </div>
   </div>
   <div class="container" v-else>
     GoogleBooksAPIにデータが存在しません。
@@ -23,12 +38,15 @@
       }
 
       // データ取得
-      const bookData = data.items[0].volumeInfo;
+      let bookData = data.items[0].volumeInfo;
       console.log(bookData);
       return {
         book: {
           title: bookData.title,
-          subTitle: bookData.subtitle
+          subTitle: bookData.subtitle,
+          description: bookData.description,
+          publisher: bookData.publisher,
+          imageUrl: bookData.imageLinks.smallThumbnail
         }
       };
     }
