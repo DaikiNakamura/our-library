@@ -2,7 +2,7 @@
   <div class="container" v-if="book">
     <h1 class="title">{{ book.title }}</h1>
     <h2 class="subtitle">{{ book.subTitle }}</h2>
-    <hr />
+    <hr/>
     <div class="media">
       <figure class="media-left">
         <p class="image is-128x128">
@@ -12,7 +12,7 @@
       <div class="media-content">
         <h3 class="title is-5">概要：</h3>
         <p>{{ book.description }}</p>
-        <br />
+        <br/>
         <h3 class="title is-5">出版社：</h3>
         <p>{{ book.publisher }}</p>
       </div>
@@ -39,14 +39,15 @@
 
       // データ取得
       let bookData = data.items[0].volumeInfo;
+      let imageLinks = bookData.imageLinks ? bookData.imageLinks : null;
       console.log(bookData);
       return {
         book: {
-          title: bookData.title,
-          subTitle: bookData.subtitle,
-          description: bookData.description,
-          publisher: bookData.publisher,
-          imageUrl: bookData.imageLinks.smallThumbnail
+          title: bookData.title ? bookData.title : '',
+          subTitle: bookData.subtitle ? bookData.subtitle : '',
+          description: bookData.description ? bookData.description : '',
+          publisher: bookData.publisher ? bookData.publisher : '',
+          imageUrl: imageLinks ? imageLinks.smallThumbnail : ''
         }
       };
     }
