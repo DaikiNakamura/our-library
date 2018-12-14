@@ -26,8 +26,8 @@
       <td>{{ book.title }}</td>
       <td>{{ book.subTitle }}</td>
       <td>{{ book.author }}</td>
-      <td v-if="book.borrowDate === ''"><span class="tag is-success">貸出可能</span></td>
-      <td v-else><span class="tag is-danger">貸出中</span></td>
+      <td v-if="book.borrowDate === ''"><span class="tag is-success" @click="rental(book)">貸出可能</span></td>
+      <td v-else><span class="tag is-danger" @click="rental(book)">貸出中({{ book.borrower }})</span></td>
     </tr>
     </tbody>
   </table>
@@ -44,6 +44,11 @@
     },
     computed: {
       ...mapGetters({books: 'getBooks'})
+    },
+    methods: {
+      rental(book) {
+        this.$emit('event-rental', book);
+      }
     }
   }
 </script>
