@@ -20,7 +20,7 @@
       </section>
       <footer class="modal-card-foot">
         <button class="button is-success" v-if="targetBook.borrowDate === ''" @click="rental">借りる</button>
-        <button class="button is-danger" v-else @click="back">返却</button>
+        <button class="button is-danger" v-else @click="back">返す</button>
         <button class="button" @click="$emit('close')">キャンセル</button>
       </footer>
     </div>
