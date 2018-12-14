@@ -4,7 +4,6 @@
       <!--見出し-->
       <thead>
       <tr>
-        <th>ISBN</th>
         <th>タイトル</th>
         <th>サブタイトル</th>
         <th>著者</th>
@@ -13,7 +12,6 @@
       </thead>
       <tfoot>
       <tr>
-        <th>ISBN</th>
         <th>タイトル</th>
         <th>サブタイトル</th>
         <th>著者</th>
@@ -24,9 +22,8 @@
       <tbody>
       <tr v-for="book in books" :key="book.isbn">
         <td>
-          <nuxt-link :to="{ name:'detail-isbn', params: { isbn: book.isbn } }">{{ book.isbn }}</nuxt-link>
+          <nuxt-link :to="{ name:'detail-isbn', params: { isbn: book.isbn } }">{{ book.title }}</nuxt-link>
         </td>
-        <td>{{ book.title }}</td>
         <td>{{ book.subTitle }}</td>
         <td>{{ book.author }}</td>
         <td v-if="book.borrowDate === ''"><span class="tag is-success" @click="rental(book)">借りる</span></td>
