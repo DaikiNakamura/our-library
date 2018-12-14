@@ -15,6 +15,7 @@ sw.*
 
 # IntelliJ IDEA
 .idea
+*.iml
 
 # Firebase Setting
 /serviceAccountKey.json
