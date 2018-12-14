@@ -58,17 +58,22 @@
           isbn: '',
           title: '',
           subTitle: '',
-          author: ''
+          author: '',
+          borrowDate: '',
+          borrower: ''
         }
       }
     },
     methods: {
+      reset() {
+        this.form.isbn = '';
+        this.form.title = '';
+        this.form.subTitle = '';
+        this.form.author = '';
+      },
       submit() {
         db.collection('books').add(this.form);
-        this.form = {};
-      },
-      reset() {
-        this.form = {};
+        this.reset();
       },
       async inputFromApi() {
         let {data} = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${this.form.isbn}`);
@@ -77,12 +82,9 @@
           return;
         }
         let bookData = data.items[0].volumeInfo;
-        this.form = {
-          isbn: this.form.isbn,
-          title: bookData.title,
-          subTitle: bookData.subtitle,
-          author: bookData.authors[0]
-        }
+        this.form.title = bookData.title ? bookData.title : '';
+        this.form.subTitle = bookData.subtitle ? bookData.subtitle : '';
+        this.form.author = bookData.authors[0] ? bookData.authors[0] : '';
       }
     }
   }

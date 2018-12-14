@@ -7,6 +7,7 @@
       <th>タイトル</th>
       <th>サブタイトル</th>
       <th>著者</th>
+      <th>貸出状況</th>
     </tr>
     </thead>
     <tfoot>
@@ -15,6 +16,7 @@
       <th>タイトル</th>
       <th>サブタイトル</th>
       <th>著者</th>
+      <th>貸出状況</th>
     </tr>
     </tfoot>
     <!--データ-->
@@ -24,6 +26,8 @@
       <td>{{ book.title }}</td>
       <td>{{ book.subTitle }}</td>
       <td>{{ book.author }}</td>
+      <td v-if="book.borrowDate === ''"><span class="tag is-success">貸出可能</span></td>
+      <td v-else><span class="tag is-danger">貸出中</span></td>
     </tr>
     </tbody>
   </table>

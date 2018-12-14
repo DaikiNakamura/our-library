@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h3 class="title">書籍一覧</h3>
-    <book-list />
+    <book-list/>
   </div>
 </template>
 
