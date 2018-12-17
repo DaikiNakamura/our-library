@@ -22,12 +22,12 @@
       <tbody>
       <tr v-for="book in books" :key="book.isbn">
         <td>
-          <nuxt-link :to="{ name:'detail-isbn', params: { isbn: book.isbn } }">{{ book.title }}</nuxt-link>
+          <nuxt-link :to="{ name:'detail-isbn', params: { isbn: book.isbn, book: book } }">{{ book.title }}</nuxt-link>
         </td>
         <td>{{ book.subTitle }}</td>
         <td>{{ book.author }}</td>
-        <td v-if="book.borrowDate === ''"><span class="tag is-success" @click="rental(book)">借りる</span></td>
-        <td v-else><span class="tag is-danger" @click="rental(book)">返す({{ book.borrower }})</span></td>
+        <td v-if="book.borrowDate === ''"><a class="button is-primary is-outlined" @click="rental(book)">借りる</a></td>
+        <td v-else><a class="button is-danger is-outlined" @click="rental(book)">返す({{ book.borrower }})</a></td>
       </tr>
       </tbody>
     </table>
