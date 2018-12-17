@@ -11,6 +11,7 @@ const createStore = () => {
     },
     actions: {
       setBooks: firebaseAction(({bindFirebaseRef}, ref) => {
+        ref = ref.orderBy('title');
         bindFirebaseRef('books', ref);
       })
     },

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h3 class="title">本の登録</h3>
+    <h3 class="title">本の編集</h3>
     <div class="field">
       <label class="label">ISBN</label>
       <div class="field has-addons">
@@ -45,10 +45,7 @@
     </div>
     <div class="field is-grouped">
       <div class="control">
-        <button name="submit" class="button is-link" v-on:click="submit">登録</button>
-      </div>
-      <div class="control">
-        <button name="reset" class="button is-text" v-on:click="reset">Reset</button>
+        <button name="submit" class="button is-link" v-on:click="submit">更新</button>
       </div>
     </div>
   </div>
@@ -59,29 +56,23 @@
   import axios from 'axios'
 
   export default {
-    data() {
+    async asyncData({params}) {
+      console.log(params.book.id);
       return {
         form: {
-          isbn: '',
-          title: '',
-          subTitle: '',
-          author: '',
-          targetReader: '',
-          borrowDate: '',
-          borrower: ''
-        }
+          isbn: params.book.isbn,
+          title: params.book.title,
+          subTitle: params.book.subTitle,
+          author: params.book.author,
+          targetReader: params.book.targetReader
+        },
+        id: params.id
       }
     },
     methods: {
-      reset() {
-        this.form.isbn = '';
-        this.form.title = '';
-        this.form.subTitle = '';
-        this.form.author = '';
-        this.form.targetReader = '';
-      },
       submit() {
-        db.collection('books').add(this.form)
+        let bookRef = db.collection('books').doc(this.id);
+        bookRef.set(this.form, { merge: true })
           .then(() => {
             window.location.href = '/';
           });

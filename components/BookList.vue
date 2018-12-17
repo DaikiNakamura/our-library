@@ -7,6 +7,7 @@
         <th>タイトル</th>
         <th>サブタイトル</th>
         <th>著者</th>
+        <th>想定読者</th>
         <th>借りる/返す</th>
       </tr>
       </thead>
@@ -15,6 +16,7 @@
         <th>タイトル</th>
         <th>サブタイトル</th>
         <th>著者</th>
+        <th>想定読者</th>
         <th>借りる/返す</th>
       </tr>
       </tfoot>
@@ -26,6 +28,7 @@
         </td>
         <td>{{ book.subTitle }}</td>
         <td>{{ book.author }}</td>
+        <td>{{ book.targetReader }}</td>
         <td v-if="book.borrowDate === ''"><a class="button is-primary is-outlined" @click="rental(book)">借りる</a></td>
         <td v-else><a class="button is-danger is-outlined" @click="rental(book)">返す({{ book.borrower }})</a></td>
       </tr>

@@ -24,6 +24,9 @@
         </a>
       </p>
       <p class="control">
+        <nuxt-link :to="{ name:'edit-isbn', params: { isbn: book.isbn, book: book, id: id } }" class="button is-success">編集</nuxt-link>
+      </p>
+      <p class="control">
         <a class="button is-danger" @click="deleteBook(id)">
           この本を削除する
         </a>
