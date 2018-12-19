@@ -56,23 +56,15 @@
   import axios from 'axios'
 
   export default {
-    async asyncData({params}) {
-      console.log(params.book.id);
+    data() {
       return {
-        form: {
-          isbn: params.book.isbn,
-          title: params.book.title,
-          subTitle: params.book.subTitle,
-          author: params.book.author,
-          targetReader: params.book.targetReader
-        },
-        id: params.id
-      }
+        form: Object.assign({}, this.$store.getters.getBook(this.$route.params.id))
+      };
     },
     methods: {
       submit() {
-        let bookRef = db.collection('books').doc(this.id);
-        bookRef.set(this.form, { merge: true })
+        let bookRef = db.collection('books').doc(this.$route.params.id);
+        bookRef.set(this.form, {merge: true})
           .then(() => {
             window.location.href = '/';
           });

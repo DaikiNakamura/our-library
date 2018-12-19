@@ -43,5 +43,9 @@ module.exports = {
     '@nuxtjs/pwa',
     '@nuxtjs/bulma'
   ],
-  plugins: ['~/plugins/firebase']
+  plugins: ['~/plugins/firebase'],
+  mode: 'spa',
+  router: {
+    middleware: 'db-load'
+  }
 };

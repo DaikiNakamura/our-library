@@ -24,7 +24,7 @@
       <tbody>
       <tr v-for="book in books" :key="book.isbn">
         <td>
-          <nuxt-link :to="{ name:'detail-isbn', params: { isbn: book.isbn, book: book } }">{{ book.title }}</nuxt-link>
+          <nuxt-link :to="{ name:'detail-id', params: { id: book.id } }">{{ book.title }}</nuxt-link>
         </td>
         <td>{{ book.subTitle }}</td>
         <td>{{ book.author }}</td>
@@ -38,14 +38,10 @@
 </template>
 
 <script>
-  import {db} from '~/plugins/firebase.js'
   import {mapGetters} from 'vuex'
 
   export default {
     name: "BookList",
-    created() {
-      this.$store.dispatch('setBooks', db.collection('books'))
-    },
     computed: {
       ...mapGetters({books: 'getBooks'})
     },

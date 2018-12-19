@@ -10,14 +10,19 @@ const createStore = () => {
       ...firebaseMutations
     },
     actions: {
-      setBooks: firebaseAction(({bindFirebaseRef}, ref) => {
+      setBooks: firebaseAction(async ({bindFirebaseRef}, ref) => {
         ref = ref.orderBy('title');
-        bindFirebaseRef('books', ref);
+        await bindFirebaseRef('books', ref);
       })
     },
     getters: {
       getBooks: (state) => {
         return state.books
+      },
+      getBook: (state) => (id) => {
+        return state.books.filter((book) => {
+          return book.id === id;
+        })[0];
       }
     },
   })
