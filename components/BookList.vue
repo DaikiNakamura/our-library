@@ -24,7 +24,7 @@
       <tbody>
       <tr v-for="book in books" :key="book.isbn">
         <td>
-          <nuxt-link :to="{ name:'detail-id', params: { id: book.id } }">{{ book.title }}</nuxt-link>
+          <nuxt-link :to="{ name:'detail', query: { id: book.id } }">{{ book.title }}</nuxt-link>
         </td>
         <td>{{ book.subTitle }}</td>
         <td>{{ book.author }}</td>

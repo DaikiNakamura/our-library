@@ -58,12 +58,12 @@
   export default {
     data() {
       return {
-        form: Object.assign({}, this.$store.getters.getBook(this.$route.params.id))
+        form: Object.assign({}, this.$store.getters.getBook(this.$route.query.id))
       };
     },
     methods: {
       submit() {
-        let bookRef = db.collection('books').doc(this.$route.params.id);
+        let bookRef = db.collection('books').doc(this.$route.query.id);
         bookRef.set(this.form, {merge: true})
           .then(() => {
             window.location.href = '/';

@@ -24,10 +24,10 @@
         </a>
       </p>
       <p class="control">
-        <nuxt-link :to="{ name:'edit-id', params: { id: $route.params.id } }" class="button is-success">編集</nuxt-link>
+        <nuxt-link :to="{ name:'edit', query: { id: $route.query.id } }" class="button is-success">編集</nuxt-link>
       </p>
       <p class="control">
-        <a class="button is-danger" @click="deleteBook($route.params.id)">
+        <a class="button is-danger" @click="deleteBook($route.query.id)">
           この本を削除する
         </a>
       </p>
@@ -47,7 +47,7 @@
     },
     computed: {
       book() {
-        return Object.assign({}, this.$store.getters.getBook(this.$route.params.id), this.apiBookData);
+        return Object.assign({}, this.$store.getters.getBook(this.$route.query.id), this.apiBookData);
       }
     },
     mounted() {
