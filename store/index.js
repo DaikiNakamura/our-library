@@ -11,13 +11,21 @@ const createStore = () => {
     },
     actions: {
       setBooks: firebaseAction(async ({bindFirebaseRef}, ref) => {
-        ref = ref.orderBy('title');
         await bindFirebaseRef('books', ref);
       })
     },
     getters: {
       getBooks: (state) => {
         return state.books
+      },
+      getBooksByKeyWord: (state) => (keyWord) => {
+        return state.books.filter((book) => {
+          let flg = false;
+          if (book.title.indexOf(keyWord) > -1) {
+            flg = true;
+          }
+          return flg;
+        });
       },
       getBook: (state) => (id) => {
         return state.books.filter((book) => {

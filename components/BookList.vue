@@ -1,6 +1,11 @@
 <template>
   <div class="table__wrapper ">
-    <table class="table">
+    <div class="field">
+      <div class="control">
+        <input class="input" type="text" placeholder="タイトルでフィルターをかけることができます" v-model="keyWord">
+      </div>
+    </div>
+    <table class="table is-fullwidth">
       <!--見出し-->
       <thead>
       <tr>
@@ -38,12 +43,20 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
-
   export default {
     name: "BookList",
+    data() {
+      return {
+        keyWord: ''
+      }
+    },
     computed: {
-      ...mapGetters({books: 'getBooks'})
+      books() {
+        if (this.keyWord && this.keyWord !== '') {
+          return this.$store.getters.getBooksByKeyWord(this.keyWord);
+        }
+        return this.$store.getters.getBooks;
+      }
     },
     methods: {
       rental(book) {
