@@ -26,18 +26,34 @@
         </th>
         <th @click="changeSort('targetReader')">
           想定読者
-          <i class="fa fa-sort-alpha-asc" v-if="sortKey==='author' && order === 1"></i>
-          <i class="fa fa-sort-alpha-desc" v-if="sortKey==='author' && order === -1"></i>
+          <i class="fa fa-sort-alpha-asc" v-if="sortKey==='targetReader' && order === 1"></i>
+          <i class="fa fa-sort-alpha-desc" v-if="sortKey==='targetReader' && order === -1"></i>
         </th>
         <th>借りる/返す</th>
       </tr>
       </thead>
       <tfoot>
       <tr>
-        <th @click="changeSort('title')">タイトル</th>
-        <th @click="changeSort('subTitle')">サブタイトル</th>
-        <th @click="changeSort('author')">著者</th>
-        <th @click="changeSort('targetReader')">想定読者</th>
+        <th @click="changeSort('title')">
+          タイトル
+          <i class="fa fa-sort-alpha-asc" v-if="sortKey==='title' && order === 1"></i>
+          <i class="fa fa-sort-alpha-desc" v-if="sortKey==='title' && order === -1"></i>
+        </th>
+        <th @click="changeSort('subTitle')">
+          サブタイトル
+          <i class="fa fa-sort-alpha-asc" v-if="sortKey==='subTitle' && order === 1"></i>
+          <i class="fa fa-sort-alpha-desc" v-if="sortKey==='subTitle' && order === -1"></i>
+        </th>
+        <th @click="changeSort('author')">
+          著者
+          <i class="fa fa-sort-alpha-asc" v-if="sortKey==='author' && order === 1"></i>
+          <i class="fa fa-sort-alpha-desc" v-if="sortKey==='author' && order === -1"></i>
+        </th>
+        <th @click="changeSort('targetReader')">
+          想定読者
+          <i class="fa fa-sort-alpha-asc" v-if="sortKey==='targetReader' && order === 1"></i>
+          <i class="fa fa-sort-alpha-desc" v-if="sortKey==='targetReader' && order === -1"></i>
+        </th>
         <th>借りる/返す</th>
       </tr>
       </tfoot>
