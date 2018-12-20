@@ -9,19 +9,35 @@
       <!--見出し-->
       <thead>
       <tr>
-        <th>タイトル</th>
-        <th>サブタイトル</th>
-        <th>著者</th>
-        <th>想定読者</th>
+        <th @click="changeSort('title')">
+          タイトル
+          <i class="fa fa-sort-alpha-asc" v-if="sortKey==='title' && order === 1"></i>
+          <i class="fa fa-sort-alpha-desc" v-if="sortKey==='title' && order === -1"></i>
+        </th>
+        <th @click="changeSort('subTitle')">
+          サブタイトル
+          <i class="fa fa-sort-alpha-asc" v-if="sortKey==='subTitle' && order === 1"></i>
+          <i class="fa fa-sort-alpha-desc" v-if="sortKey==='subTitle' && order === -1"></i>
+        </th>
+        <th @click="changeSort('author')">
+          著者
+          <i class="fa fa-sort-alpha-asc" v-if="sortKey==='author' && order === 1"></i>
+          <i class="fa fa-sort-alpha-desc" v-if="sortKey==='author' && order === -1"></i>
+        </th>
+        <th @click="changeSort('targetReader')">
+          想定読者
+          <i class="fa fa-sort-alpha-asc" v-if="sortKey==='author' && order === 1"></i>
+          <i class="fa fa-sort-alpha-desc" v-if="sortKey==='author' && order === -1"></i>
+        </th>
         <th>借りる/返す</th>
       </tr>
       </thead>
       <tfoot>
       <tr>
-        <th>タイトル</th>
-        <th>サブタイトル</th>
-        <th>著者</th>
-        <th>想定読者</th>
+        <th @click="changeSort('title')">タイトル</th>
+        <th @click="changeSort('subTitle')">サブタイトル</th>
+        <th @click="changeSort('author')">著者</th>
+        <th @click="changeSort('targetReader')">想定読者</th>
         <th>借りる/返す</th>
       </tr>
       </tfoot>
@@ -47,20 +63,27 @@
     name: "BookList",
     data() {
       return {
-        keyWord: ''
+        keyWord: '',
+        sortKey: 'title',
+        order: 1
       }
     },
     computed: {
       books() {
-        if (this.keyWord && this.keyWord !== '') {
-          return this.$store.getters.getBooksByKeyWord(this.keyWord);
-        }
-        return this.$store.getters.getBooks;
+        return this.$store.getters.getBooks({
+          titleKeyWord: this.keyWord,
+          sortKey: this.sortKey,
+          order: this.order
+        });
       }
     },
     methods: {
       rental(book) {
         this.$emit('event-rental', book);
+      },
+      changeSort(sortKey) {
+        this.sortKey = sortKey;
+        this.order *= -1;
       }
     }
   }
@@ -69,5 +92,8 @@
 <style scoped>
   .table__wrapper {
     overflow-x: auto;
+  }
+  .table th {
+    cursor: pointer;
   }
 </style>

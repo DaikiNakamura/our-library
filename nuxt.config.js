@@ -41,7 +41,8 @@ module.exports = {
   },
   modules: [
     '@nuxtjs/pwa',
-    '@nuxtjs/bulma'
+    '@nuxtjs/bulma',
+    '@nuxtjs/font-awesome'
   ],
   plugins: ['~/plugins/firebase'],
   mode: 'spa',

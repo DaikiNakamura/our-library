@@ -15,8 +15,25 @@ const createStore = () => {
       })
     },
     getters: {
-      getBooks: (state) => {
-        return state.books
+      getBooks: (state) => ({titleKeyWord, sortKey, order}) => {
+
+        // sort
+        state.books.sort((a, b) => {
+          if(!a.hasOwnProperty(sortKey) || !b.hasOwnProperty(sortKey)) {
+            return 0;
+          }
+          let comparison = a[sortKey].toString().localeCompare(b[sortKey].toString());
+          return comparison * order;
+        });
+
+        // keyWord
+        if (titleKeyWord && titleKeyWord !== '') {
+          return state.books.filter((book) => {
+            return book.title.indexOf(titleKeyWord) > -1;
+          });
+        }
+
+        return state.books;
       },
       getBooksByKeyWord: (state) => (keyWord) => {
         return state.books.filter((book) => {
