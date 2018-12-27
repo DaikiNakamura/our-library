@@ -25,7 +25,7 @@ jobs:
       - run:
           name: Setup FireStore credentials
           command: |
-            curl -L -o ~/serviceAccountKey.json "https://drive.google.com/uc?export=download&id=${SERVICE_ACCOUNT_KEY_ID}"
+            curl -L -o serviceAccountKey.json "https://drive.google.com/uc?export=download&id=${SERVICE_ACCOUNT_KEY_ID}"
       - run:
           name: Build
           command: npm run generate
