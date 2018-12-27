@@ -25,8 +25,7 @@ jobs:
       - run:
           name: Setup FireStore credentials
           command: |
-            printf "{\n\"apiKey\": \"${FIREBASE_API_KEY}\"\n\"authDomain\": \"${FIREBASE_PJ_NAME}.firebaseapp.com\"\n\"databaseURL\": \"https://${FIREBASE_PJ_NAME}.firebaseio.com\"\n\"projectId\": \"${FIREBASE_PJ_NAME}\"\n}"> ~/serviceAccountKey.json
-            chmod 600 ~/serviceAccountKey.json
+            curl -L https://drive.google.com/file/d/$SERVICE_ACCOUNT_KEY_ID/view?usp=drivesdk -o ~/serviceAccountKey.json
       - run:
           name: Build
           command: npm run generate
